@@ -27,7 +27,7 @@ export default class example extends Component<Props> {
   }
 
   _handleClickLogout () {
-    Login.logout()
+    LineLogin.logout()
   }
 
   render() {
