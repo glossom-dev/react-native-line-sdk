@@ -7,20 +7,17 @@ def safeExtGet(prop, fallback) {
 buildscript {
     repositories {
         jcenter()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
+        google()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.5.3'
     }
 }
 
 android {
     compileSdkVersion safeExtGet('compileSdkVersion', 26)
-    buildToolsVersion safeExtGet('buildToolsVersion', "27.0.1")
+    buildToolsVersion safeExtGet('buildToolsVersion', "28.0.3")
 
     defaultConfig {
         minSdkVersion safeExtGet('minSdkVersion', 17)
@@ -45,16 +42,14 @@ repositories {
     flatDir {
         dirs 'libs'
     }
-    maven {
-        url 'https://maven.google.com/'
-        name 'Google'
-    }
+    google()
 }
 
 dependencies {
-    compile fileTree(dir: "libs", include: ["*.jar"])
-    compile(name:'line-sdk-5.0.1', ext:'aar') { transitive = true }
-    compile "com.android.support:appcompat-v7:26.0.1"
-    compile "com.android.support:customtabs:26.0.1"
-    compile "com.facebook.react:react-native:+"  // From node_modules
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    // implementation(name:'line-sdk-5.4.0', ext:'aar') { transitive = true }
+    implementation 'com.linecorp.linesdk:linesdk:5.4.0'
+    implementation "com.android.support:appcompat-v7:28.0.3"
+    implementation "com.android.support:customtabs:28.0.3"
+    implementation "com.facebook.react:react-native:+"  // From node_modules
 }

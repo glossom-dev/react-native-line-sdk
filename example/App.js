@@ -10,24 +10,24 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableNativeFeedback
+  TouchableHighlight 
 } from 'react-native';
 
 import LineLogin from 'react-native-line'
 
-class example extends Component {
+export default class example extends Component<Props> {
   _handleClickLogin () {
     LineLogin.login()
-    .then((user) => {
-      console.log(user)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .then((user) => {
+        console.log(user)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   _handleClickLogout () {
-    LoginManager.logout()
+    LineLogin.logout()
   }
 
   render() {
@@ -37,28 +37,28 @@ class example extends Component {
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.android.js
+          To get started, edit index.js
         </Text>
         <Text style={styles.instructions}>
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
 
-        <TouchableNativeFeedback
+        <TouchableHighlight
           style={styles.button}
           onPress={this._handleClickLogin}>
           <View>
             <Text>Login</Text>
           </View>
-        </TouchableNativeFeedback>
+        </TouchableHighlight> 
 
-        <TouchableNativeFeedback
+        <TouchableHighlight
           style={styles.button}
           onPress={this._handleClickLogout}>
           <View>
             <Text>Logout</Text>
           </View>
-        </TouchableNativeFeedback>
+        </TouchableHighlight> 
       </View>
     );
   }
@@ -82,5 +82,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-AppRegistry.registerComponent('example', () => example);

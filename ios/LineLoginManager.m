@@ -92,6 +92,11 @@ RCT_EXPORT_METHOD(getUserProfile:(RCTPromiseResolveBlock)resolve
     }
     return self;
 }
+// Please add this one
++ (BOOL)requiresMainQueueSetup
+{
+  return NO;
+}
 
 - (void)loginWithPermissions:(NSArray *)permissions
 {
